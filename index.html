@@ -32,84 +32,52 @@
 *{box-sizing:border-box;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Arial}
 body{margin:0;background:var(--bg);color:#111;transition:background .3s,color .3s}
 [data-theme="dark"] body{color:#e5e7eb}
-.app{max-width:1100px;margin:24px auto;padding:18px}
-.header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px}
-.brand{display:flex;gap:12px;align-items:center}
+
+.app{max-width:1100px;margin:auto;padding:16px}
+.header{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.brand{display:flex;gap:10px;align-items:center;flex:1;min-width:200px}
 .logo{width:48px;height:48px;border-radius:10px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#fff;box-shadow:var(--shadow)}
 .logo img{width:100%;height:100%;object-fit:contain}
-h1{margin:0;font-size:20px;font-weight:700}
-p.lead{margin:0;color:var(--muted);font-size:13px}
-#waliKelasName{font-size:14px;color:var(--accent-2);margin-top:4px;font-weight:600}
-.layout{display:grid;grid-template-columns:240px 1fr;gap:18px}
+h1{margin:0;font-size:clamp(16px,4vw,20px);font-weight:700}
+p.lead{margin:0;color:var(--muted);font-size:clamp(12px,3vw,13px)}
+#waliKelasName{font-size:clamp(12px,3vw,14px);color:var(--accent-2);margin-top:3px;font-weight:600}
+
+.layout{display:grid;grid-template-columns:240px 1fr;gap:16px}
 @media(max-width:900px){.layout{grid-template-columns:1fr}.sidebar{order:2}.content{order:1}}
-.sidebar{background:var(--card);padding:14px;border-radius:12px;box-shadow:var(--shadow);transition:background .3s}
-.nav-item{display:flex;align-items:center;gap:10px;padding:10px;border-radius:8px;color:var(--muted);cursor:pointer;transition:.2s}
+
+.sidebar{background:var(--card);padding:12px;border-radius:12px;box-shadow:var(--shadow);transition:background .3s}
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px;border-radius:8px;color:var(--muted);cursor:pointer;transition:.2s;font-size:clamp(13px,3vw,14px)}
 .nav-item:hover{background:var(--hover);color:var(--accent)}
 .nav-item.active{background:linear-gradient(90deg,rgba(11,94,215,0.08),rgba(43,110,163,0.04));color:var(--accent);font-weight:600}
-.card{background:var(--card);padding:16px;border-radius:12px;box-shadow:var(--shadow);transition:background .3s}
-.toolbar{display:flex;align-items:center;gap:12px;justify-content:space-between;margin-bottom:14px}
-table{width:100%;border-collapse:collapse;font-size:14px}
-table th,table td{padding:10px;border-bottom:1px solid var(--gray);text-align:left}
+
+.card{background:var(--card);padding:14px;border-radius:12px;box-shadow:var(--shadow);transition:background .3s}
+.toolbar{display:flex;align-items:center;gap:10px;justify-content:space-between;flex-wrap:wrap;margin-bottom:12px}
+.controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.controls input{padding:6px 8px;border:1px solid var(--gray);border-radius:6px;font-size:13px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+table th,table td{padding:8px;border-bottom:1px solid var(--gray);text-align:left}
 table tbody tr:nth-child(even){background:var(--hover)}
-.btn{padding:8px 14px;border-radius:8px;border:0;cursor:pointer;font-size:13px;transition:.2s}
+.btn{padding:7px 12px;border-radius:8px;border:0;cursor:pointer;font-size:13px;transition:.2s}
 .btn:hover{opacity:.9}
 .btn-primary{background:var(--accent);color:#fff}
 .btn-muted{background:#f3f4f6;color:var(--muted)}
-.controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.small{font-size:13px}
-footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
+footer{margin-top:18px;text-align:center;color:var(--muted);font-size:12px}
+
 .toggle{display:inline-flex;align-items:center;gap:8px}
 .switch{width:44px;height:24px;background:#d1d5db;border-radius:999px;position:relative;cursor:pointer;transition:.2s}
 .switch .knob{position:absolute;left:3px;top:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:all .2s}
 .switch.on{background:linear-gradient(90deg,var(--accent),var(--accent-2))}
 .switch.on .knob{left:23px}
-.dashboard-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-@media(max-width:900px){.dashboard-grid{grid-template-columns:1fr}}
 
-/* === Welcome Splash Animation === */
-#welcomeOverlay{
-  position:fixed;
-  top:0;left:0;right:0;bottom:0;
-  background:#000;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  z-index:9999;
-  opacity:1;
-  transition:opacity 1s ease;
-}
-#welcomeOverlay img{
-  width:120px;
-  height:120px;
-  object-fit:contain;
-  animation:fadeIn 1s ease;
-}
-#welcomeOverlay h2{
-  color:#fff;
-  margin-top:16px;
-  font-weight:600;
-  font-size:18px;
-  opacity:0;
-  animation:fadeInText 1.5s ease forwards;
-  animation-delay:0.5s;
-}
-@keyframes fadeIn {
-  from{opacity:0;transform:scale(0.9);}
-  to{opacity:1;transform:scale(1);}
-}
-@keyframes fadeInText {
-  from{opacity:0;transform:translateY(10px);}
-  to{opacity:1;transform:translateY(0);}
-}
+.dashboard-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:700px){.dashboard-grid{grid-template-columns:1fr}}
+
+.card h3{margin:0 0 8px 0;font-size:clamp(14px,3.5vw,16px)}
+.center{text-align:center}
+
 </style>
 </head>
 <body>
-  <!-- Splash Welcome -->
-<div id="welcomeOverlay">
-  <img src="https://iili.io/FSNupqu.png" alt="Logo Sekolah">
-  <h2>UPTD SD NEGERI 2 TANJUNG QENCONO</h2>
-</div>
 
 <div class="app">
   <div class="header">
@@ -183,20 +151,8 @@ footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
 </div>
 
 <script>
-const API_BASE_URL = "https://script.google.com/macros/s/AKfycbwQ2stWG5TWZ70lCLQnJpdEryqDNEoK9qnB-HfTSRGe8UvBMlE3D4wK94TYpNFQi9hClw/exec";
+const API_BASE_URL = "https://script.google.com/macros/s/AKfycbwPE1mmoLU0S7FwwFCJ0Q5kMWU-P7kIBnENmq7EzH6IvkhSRtJDBzGb1UzIkzfAFAgzqQ/exec";
 const pages = { dashboard:document.getElementById('page-dashboard'), absen:document.getElementById('page-absen') };
-
-// === Splash Welcome Animation ===
-window.addEventListener("load", ()=>{
-  const overlay = document.getElementById("welcomeOverlay");
-  setTimeout(()=>{
-    overlay.style.opacity = "0";
-    setTimeout(()=>{
-      overlay.style.display = "none";
-      document.querySelector(".app").classList.add("show");
-    },1000);
-  },3000); // durasi tampil 3 detik
-});
 
 // === Navigasi ===
 document.querySelectorAll('.nav-item').forEach(n=>{n.addEventListener('click',()=>showPage(n.dataset.page));});
